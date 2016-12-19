@@ -1709,6 +1709,11 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
 
         self.mark_watched(video_id, video_info)
 
+        if 'storyboard_spec' in video_info:
+            storyboard_spec = video_info['storyboard_spec'][0]
+        else:
+            storyboard_spec = None
+
         return {
             'id': video_id,
             'uploader': video_uploader,
@@ -1737,6 +1742,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             'is_live': is_live,
             'start_time': start_time,
             'end_time': end_time,
+            'storyboard_spec': storyboard_spec
         }
 
 
